@@ -7,13 +7,11 @@ interface Props {
 
 const ExpenseList = ({ expenses }: Props) => {
   return (
-    <div>
-      {expenses.length === 0 && <p>No expanses :\ </p>}
-      <div>
-        {expenses.map((expense) => (
-          <ExpenseItem key={expense.id} expense={expense} />
-        ))}
-      </div>
+    <div className="space-y-2">
+      {expenses.length === 0 && <p className="text-center">No expanses :\ </p>}
+      {expenses.map((expense) => (
+        <ExpenseItem key={expense.id} expense={expense} />
+      ))}
     </div>
   );
 };

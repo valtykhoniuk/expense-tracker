@@ -6,14 +6,16 @@ interface Props {
 
 const ExpenseItem = ({ expense }: Props) => {
   return (
-    <div>
+    <div className="flex justify-between items-center p-2 border-b">
       <div>
-        <div>{expense.title}</div>
-        <div>
+        <div className="font-semibold">{expense.title}</div>
+        <div className="text-sm text-gray-500">
           {expense.category} | {new Date(expense.date).toLocaleDateString()}
         </div>
       </div>
-      <div>- {expense.amount.toFixed(2)} ₴</div>
+      <div className="text-right font-bold text-red-600">
+        - {expense.amount.toFixed(2)} ₴
+      </div>
     </div>
   );
 };

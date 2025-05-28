@@ -11,8 +11,8 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>Expense tracker</h1>
+    <div className="max-w-xl mx-auto mt-10 p-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">Expense tracker</h1>
       <ExpenseForm onAdd={handleAddExpense} />
       <ExpenseList expenses={expenses} />
     </div>
