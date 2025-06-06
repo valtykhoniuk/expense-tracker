@@ -1,0 +1,18 @@
+{
+  "expenses": [
+    {
+      "id": "1",
+      "title": "Coffee",
+      "amount": 40,
+      "category": "food",
+      "date": "2025-06-01"
+    },
+    {
+      "id": "2",
+      "title": "Taxi",
+      "amount": 80,
+      "category": "transport",
+      "date": "2025-06-02"
+    }
+  ]
+}

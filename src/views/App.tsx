@@ -9,31 +9,12 @@ function App() {
 
   useEffect(() => {
     const fetchExpenses = async () => {
-      setLoading(true);
       try {
-        const res = await new Promise<Expense[]>((resolve) =>
-          setTimeout(() => {
-            resolve([
-              {
-                id: "1",
-                title: "Кава",
-                amount: 40,
-                category: "food",
-                date: "2025-05-26",
-              },
-              {
-                id: "2",
-                title: "Проїзд",
-                amount: 80,
-                category: "transport",
-                date: "2025-05-25",
-              },
-            ]);
-          }, 1000)
-        );
-        setExpenses(res);
+        const res = await fetch("http://localhost:3001/expenses");
+        const data = await res.json();
+        setExpenses(data);
       } catch (error) {
-        console.error("Error", error);
+        console.error("Error downloading:", error);
       } finally {
         setLoading(false);
       }
@@ -44,10 +25,18 @@ function App() {
 
   const handleAddExpense = async (expense: Expense) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      setExpenses((prev) => [expense, ...prev]);
+      const res = await fetch("http://localhost:3001/expenses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(expense),
+      });
+
+      if (!res.ok) throw new Error("Expense wasn't added");
+
+      const saved = await res.json();
+      setExpenses((prev) => [saved, ...prev]);
     } catch (error) {
-      console.error("Error", error);
+      console.error("Error adding:", error);
     }
   };
 
