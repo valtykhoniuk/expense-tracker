@@ -40,11 +40,25 @@ function App() {
     }
   };
 
+  const handleDeleteExpense = async (id: string) => {
+    try {
+      const res = await fetch(`http://localhost:3001/expenses/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) throw new Error("Expense wasn't deleted");
+
+      setExpenses((prev) => prev.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting:", error);
+    }
+  };
+
   return (
     <div className="max-w-xl mx-auto mt-10 p-4">
       <h1 className="text-2xl font-bold mb-4 text-center">Expense tracker</h1>
       <ExpenseForm onAdd={handleAddExpense} />
-      <ExpenseList expenses={expenses} />
+      <ExpenseList expenses={expenses} onDelete={handleDeleteExpense} />
     </div>
   );
 }
