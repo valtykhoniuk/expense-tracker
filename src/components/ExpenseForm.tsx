@@ -1,26 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Expense } from "../types/Expense";
 
 interface Props {
   onAdd: (expence: Expense) => void;
+  editingExpense?: Expense | null;
+  onUpdate: (expense: Expense) => void;
 }
 
-const ExpenseForm = ({ onAdd }: Props) => {
+const ExpenseForm = ({ onAdd, onUpdate, editingExpense }: Props) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
 
+  useEffect(() => {
+    if (editingExpense) {
+      setTitle(editingExpense.title);
+      setAmount(editingExpense.amount.toString());
+      setCategory(editingExpense.category);
+      setDate(editingExpense.date);
+    } else {
+      setTitle("");
+      setAmount("");
+      setCategory("");
+      setDate("");
+    }
+  }, [editingExpense]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newExpense: Expense = {
-      id: crypto.randomUUID(),
+    const expense: Expense = {
+      id: editingExpense ? editingExpense.id : crypto.randomUUID(),
       title,
       amount: parseFloat(amount),
       category,
       date,
     };
-    onAdd(newExpense);
+
+    if (editingExpense) {
+      onUpdate(expense);
+    } else {
+      onAdd(expense);
+    }
+
     setTitle("");
     setAmount("");
     setCategory("");
@@ -68,7 +90,7 @@ const ExpenseForm = ({ onAdd }: Props) => {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded w-full"
         >
-          Add
+          {editingExpense ? "Update" : "Add"}
         </button>
       </div>
     </form>

@@ -3,9 +3,10 @@ import type { Expense } from "../types/Expense";
 interface Props {
   expense: Expense;
   onDelete: (id: string) => void;
+  onEdit: (expense: Expense) => void;
 }
 
-const ExpenseItem = ({ expense, onDelete }: Props) => {
+const ExpenseItem = ({ expense, onDelete, onEdit }: Props) => {
   return (
     <div className="flex justify-between items-center p-2 border-b">
       <div>
@@ -22,6 +23,12 @@ const ExpenseItem = ({ expense, onDelete }: Props) => {
         onClick={() => onDelete(expense.id)}
       >
         Delete
+      </button>
+      <button
+        className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 mr-2"
+        onClick={() => onEdit(expense)}
+      >
+        Edit
       </button>
     </div>
   );
