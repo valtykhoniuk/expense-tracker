@@ -81,6 +81,7 @@ function App() {
   return (
     <div className="max-w-xl mx-auto mt-10 p-4">
       <h1 className="text-2xl font-bold mb-4 text-center">Expense tracker</h1>
+      {loading && <h1>Please, wait ^^</h1>}
       <ExpenseForm
         onAdd={handleAddExpense}
         onUpdate={handleUpdateExpense}

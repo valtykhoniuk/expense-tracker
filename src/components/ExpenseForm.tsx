@@ -74,7 +74,7 @@ const ExpenseForm = ({ onAdd, onUpdate, editingExpense }: Props) => {
       >
         <option value="food">Food</option>
         <option value="transport">Transport</option>
-        <option value="entertainment">Joyment</option>
+        <option value="entertainment">Entertainment</option>
         <option value="other">Other</option>
       </select>
 
