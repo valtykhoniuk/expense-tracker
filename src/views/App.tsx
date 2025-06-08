@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { Expense } from "../types/Expense";
 import ExpenseForm from "../components/ExpenseForm";
 import ExpenseList from "../components/ExpenseList";
+import ExpenseChart from "../components/ExpenseChart";
 
 function App() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
@@ -90,6 +91,7 @@ function App() {
         onDelete={handleDeleteExpense}
         onEdit={handleEditInit}
       />
+      <ExpenseChart expenses={expenses} />
     </div>
   );
 }

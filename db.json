@@ -1,11 +1,25 @@
 {
   "expenses": [
     {
-      "id": "e996a96d-90d4-4f74-8221-c700d954f3d9",
-      "title": ",,",
-      "amount": 899,
-      "category": "",
-      "date": "2025-06-06"
+      "id": "8ee4bc38-c9dd-4be3-9d92-4e5c24a423b1",
+      "title": "apples",
+      "amount": 45,
+      "category": "food",
+      "date": "2025-06-04"
+    },
+    {
+      "id": "22477f8a-30af-4f51-ab05-a683f91d6a22",
+      "title": "hockey",
+      "amount": 45,
+      "category": "entertainment",
+      "date": "2025-06-19"
+    },
+    {
+      "id": "d3703b64-8a06-4ccc-afa2-8fdc5f0a0f89",
+      "title": "jewelery",
+      "amount": 33,
+      "category": "entertainment",
+      "date": "2025-06-19"
     }
   ]
 }
