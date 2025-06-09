@@ -60,7 +60,10 @@ const ExpenseForm = ({ onAdd, onUpdate, editingExpense }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded mb-4">
+    <form
+      onSubmit={handleSubmit}
+      className="p-4 border-0 bg-blue-50 rounded mb-4"
+    >
       <Input
         type="text"
         placeholder="Name"

@@ -24,7 +24,7 @@ const Input = ({
       required={required}
       className={`block w-full
         mb-2 p-2 border-0
-        bg-blue-50 ${className}`}
+        bg-blue-100 text-blue-600 ${className}`}
     />
   );
 };

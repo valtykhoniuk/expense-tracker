@@ -15,7 +15,7 @@ const Select = ({ value, onChange, options, className = "" }: Props) => {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={`block w-full mb-2 p-2 border rounded
+      className={`block w-full mb-2 p-2 border-0 rounded
          bg-blue-100 text-blue-900  ${className}`}
     >
       {options.map((option) => (

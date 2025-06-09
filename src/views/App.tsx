@@ -79,20 +79,24 @@ function App() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Expense tracker</h1>
-      {loading && <h1>Please, wait ^^</h1>}
-      <ExpenseForm
-        onAdd={handleAddExpense}
-        onUpdate={handleUpdateExpense}
-        editingExpense={editingExpense}
-      />
-      <ExpenseList
-        expenses={expenses}
-        onDelete={handleDeleteExpense}
-        onEdit={handleEditInit}
-      />
-      <ExpenseChart expenses={expenses} />
+    <div className="bg-blue-700 py-10">
+      <div className="max-w-xl mx-auto p-4 bg-white rounded-4xl px-13">
+        <h1 className="text-2xl font-bold mb-4 text-center text-blue-700">
+          Expense tracker
+        </h1>
+        {loading && <h1>Please, wait ^^</h1>}
+        <ExpenseForm
+          onAdd={handleAddExpense}
+          onUpdate={handleUpdateExpense}
+          editingExpense={editingExpense}
+        />
+        <ExpenseList
+          expenses={expenses}
+          onDelete={handleDeleteExpense}
+          onEdit={handleEditInit}
+        />
+        <ExpenseChart expenses={expenses} />
+      </div>
     </div>
   );
 }
