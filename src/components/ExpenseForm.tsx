@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import type { Expense } from "../types/Expense";
+import Button from "../UI/Button";
+import Select from "../UI/Select";
+import Input from "../UI/Input";
 
 interface Props {
   onAdd: (expence: Expense) => void;
@@ -12,6 +15,13 @@ const ExpenseForm = ({ onAdd, onUpdate, editingExpense }: Props) => {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
+
+  const categoryOptions = [
+    { value: "food", label: "Food" },
+    { value: "transport", label: "Transport" },
+    { value: "entertainment", label: "Entertainment" },
+    { value: "other", label: "Other" },
+  ];
 
   useEffect(() => {
     if (editingExpense) {
@@ -51,47 +61,31 @@ const ExpenseForm = ({ onAdd, onUpdate, editingExpense }: Props) => {
 
   return (
     <form onSubmit={handleSubmit} className="p-4 border rounded mb-4">
-      <input
+      <Input
         type="text"
         placeholder="Name"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={setTitle}
         required
-        className="block w-full mb-2 p-2 border"
       />
-      <input
+      <Input
         type="number"
         placeholder="Sum"
         value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+        onChange={setAmount}
         required
-        className="block w-full mb-2 p-2 border"
       />
-      <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="block w-full mb-2 p-2 border"
-      >
-        <option value="food">Food</option>
-        <option value="transport">Transport</option>
-        <option value="entertainment">Entertainment</option>
-        <option value="other">Other</option>
-      </select>
 
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        required
-        className="block w-full mb-2 p-2 border"
+      <Select
+        value={category}
+        onChange={setCategory}
+        options={categoryOptions}
       />
+
+      <Input type="date" value={date} onChange={setDate} required />
+
       <div className="flex justify-center">
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded w-full"
-        >
-          {editingExpense ? "Update" : "Add"}
-        </button>
+        <Button type="submit">{editingExpense ? "Update" : "Add"}</Button>
       </div>
     </form>
   );
